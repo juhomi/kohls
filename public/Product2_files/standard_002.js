@@ -1,0 +1,1 @@
+mboxFactories.get('default').get('kohlscom_equity_bar',0).setOffer(new mboxOfferDefault()).loaded();mboxFactories.get('default').getPCId().forceId("1331707751284-583283.17");
