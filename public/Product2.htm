@@ -1814,28 +1814,24 @@
                             <!--							<input name="bmImage" value="add.x" type="hidden"><input name="bmImage" value="add.y" type="hidden"><input name="bmImage" value="add" type="hidden"><input class="button" name="add" src="kohls_files/addtobag_v1_m56577569832236562.gif" alt="Add To Bag" type="image">  -->
                             <br>
                             <div id="addto1cart">
-                                <input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart" onclick="addTo1cart('Croft And Barrow Solid Pima Tee ','6.99','addto1cart')"/>                                 
-                            </div>
+                                <script type="text/javascript">
+                                    var customEvent = document.createEvent('Event');
+                                    customEvent.initEvent('fire1CartEvent', true, true);
 
-                            <div id="addto1cartexten">
-                            <script type="text/javascript">
-                                var customEvent = document.createEvent('Event');
-                                customEvent.initEvent('fire1CartEvent', true, true);
+                                    function fireAddToCart(variant, product) {
+                                        fire1CartEvent(variant, product);
+                                    }
 
-                                function fireAddToCart(variant, product) {
-                                    fire1CartEvent(variant, product);
-                                }
-
-                                function fire1CartEvent(variant, product) {
-                                    var items = []; //declare array            
-                                    items.push([product.toString().replace(" ", "-").toLowerCase(), variant.toString().replace(" ", "-").toLowerCase()])
-                                    hiddenDiv = document.getElementById('myAddToCartDiv');
-                                    hiddenDiv.innerHTML = items;
-                                    hiddenDiv.dispatchEvent(customEvent);
-                                }
+                                    function fire1CartEvent(variant, product) {
+                                        var items = []; //declare array            
+                                        items.push([product.toString().replace(" ", "-").toLowerCase(), variant.toString().replace(" ", "-").toLowerCase()])
+                                        hiddenDiv = document.getElementById('myAddToCartDiv');
+                                        hiddenDiv.innerHTML = items;
+                                        hiddenDiv.dispatchEvent(customEvent);
+                                    }
                             </script>
-                            <input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart ext" onclick="fireAddToCart('1013589491','croft-');"/>                            
-                        </div>
+                                <input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart" onclick="fireAddToCart('1013589491','croft-');"/>                                 
+                            </div>
                         </div>
                         <div>
                         </div>
