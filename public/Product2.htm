@@ -1819,7 +1819,7 @@
                                     customEvent.initEvent('fire1CartEvent', true, true);
 
                                     function fireAddToCart(variant, product) {
-                                        fire1CartEvent(variant, product);
+                                        fire1CartEvent(variant, product);                                        
                                     }
 
                                     function fire1CartEvent(variant, product) {
@@ -1830,7 +1830,8 @@
                                         hiddenDiv.dispatchEvent(customEvent);
                                     }
                             </script>
-                                <input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart" onclick="fireAddToCart('1013589491','croft-');"/>                                 
+                                <!--<input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart" onclick="fireAddToCart('1013589491','croft-');"/>                                 -->
+                                <button id="btn1Cart" title="Add to 1Cart" style="vertical-align:middle;text-align:center;padding-left:15px;" onclick="fireAddToCart('1013589491','croft-');">Add to 1Cart</button>
                             </div>
                         </div>
                         <div>
