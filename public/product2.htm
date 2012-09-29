@@ -2640,21 +2640,26 @@
                                 var customEvent = document.createEvent('Event');
                                 customEvent.initEvent('fire1CartEvent', true, true);
 
-                                function fireAddToCart(variant, product) {                                    
-                                    fire1CartEvent(variant, product);
+                                function fireAddToCart(product, variantoptions) {
+                                    //variantfilter = "tshirt-color:Red;tshirt-size:Small";            
+                                    fire1CartEvent(product, variantoptions);
                                 }
 
-                                function fire1CartEvent(variant, product) {
-                                    var items = []; //declare array            
-                                    items.push([product.toString().replace(" ", "-").toLowerCase(), variant.toString().replace(" ", "-").toLowerCase()])
+                                function fire1CartEvent(product, variantoptions) {
+                                    var items = null; //declare array
+                                    if (variantoptions == undefined) {
+                                        variantoptions = [];
+                                    }
+                                    var optionValue = JSON.stringify(variantoptions);
+                                    items = product.toString().replace(" ", "-").toLowerCase() + ";" + optionValue;
                                     hiddenDiv = document.getElementById('myAddToCartDiv');
-                                    hiddenDiv.innerHTML = items;
+                                    hiddenDiv.setAttribute("data-options", items);
                                     hiddenDiv.dispatchEvent(customEvent);
                                 }
                             </script>
                             <!--<input type="submit" label="1cart" class="add-to-cart primary-action button red" value="Add to 1Cart" onclick="fireAddToCart('1013589491','croft-');"/>                                 -->
                             <button id="Button1" title="Add to 1Cart" style="vertical-align: middle; text-align: center;
-                                padding-left: 15px;" onclick="fireAddToCart('1013589505','croft-');">
+                                padding-left: 15px;" onclick="fireAddToCart('croft-',[{'option_value':{'option_type_name':'tshirt-color', 'option_type_value':'Red'}}, {'option_value':{'option_type_name':'tshirt-size', 'option_type_value':'Small'}}]);">
                                 Add to 1Cart</button>
                         </div>
                         <div class="addtobag">
